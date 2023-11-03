@@ -1,52 +1,56 @@
 import { Response, Request } from "express"
-import mssql from 'mssql'
 import {  sqlConfig } from "../config/sqlConfig";
+import mssql from 'mssql'
+import {v4} from 'uuid'
+import Connection from '../dbhelpers/dbhelpers'
+const dbhelper = new Connection
 
 
 export function TestingRoute(req:Request, res:Response){
     return res.send("Server Running well")
 }
 
-export async function getAllNotes(req:Request, res:Response) {
+
+export const getAllNotes = async(req:Request, res:Response)=>{
     try {
-          const checkNoteQuery = `SELECT * FROM notes`;
-  
-          mssql.connect(sqlConfig)
-          .then(pool => {
-              return pool.request().query(checkNoteQuery);
-          })
-          .then(async result => {
-              if (result.recordset.length > 0) {
-                  console.log("success", result);
-  
-                  return res.status(200).json(result.recordset)
-  
-              }
-  
-      })
-          
-      } catch (error) {
-          return res.json({
-              error: error
-          })
-      }
-  }
 
-  export async function addNote(req: Request, res: Response){
-    let { title,description, content } = req.body;
-    let query = `INSERT INTO notes (note_id, title, content) VALUES ('${id}', '${title}', '${content}')`;
+        const pool = await mssql.connect(sqlConfig)
 
-    mssql.connect(sqlConfig).then(pool => {
-          return pool.request().query(query);
-      }).then(result => {
-          console.log("success", result);
-    }).catch(err => {
-          console.log(err);
+        let notes = (await pool.request().execute('fetchAllNotes')).recordset
+
+        return res.status(200).json({
+            notes: notes
+        })
+        
+    } catch (error) {
+        return res.json({
+            error: error
+        })
+    }
+}
+
+
+
+  export const addNote = async(req:Request, res: Response) =>{
+    try {
+        let {title,description,note} = req.body
+
+        let note_id = v4()
 
         
-          return res.status(500).json({
-              error: err.message || 'An error occurred while registering the note.'
-          });
-      });
-          
+        
+        let result = dbhelper.execute('addNote', {
+            note_id, title,description,note
+        })
+        
+
+        return res.status(200).json({
+            message: 'Note added successfully'
+        })
+        
+    } catch (error) {
+        return res.json({
+            error: error
+        })
     }
+}
