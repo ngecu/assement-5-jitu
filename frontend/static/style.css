@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #ddd;
 }
 
 .navbar {
@@ -20,4 +21,25 @@ body {
 .navbar a:hover {
   background-color: #ddd;
   color: black;
+}
+
+.dashboard-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }/*# sourceMappingURL=style.css.map */

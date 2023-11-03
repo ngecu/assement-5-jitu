@@ -49,7 +49,6 @@ const getAllNotes = () => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (error) {
         console.error(error);
-        // Handle the error as needed
     }
 });
 getAllNotes();

@@ -22,7 +22,7 @@ const getAllNotes = async () => {
             all_tbody2.innerHTML = no_data_tr;
         } else {
             let tableHTML = '';
-            data.forEach((element, index) => {
+            data.forEach((element:any, index:number) => {
                 tableHTML += `
                     <tr>
                         <td>${index + 1}</td>
@@ -37,12 +37,12 @@ const getAllNotes = async () => {
                 `;
             });
 
-            const tableBody = document.querySelector('table tbody');
+            const tableBody = document.querySelector('table tbody') as HTMLElement;
             tableBody.innerHTML = tableHTML;
         }
     } catch (error) {
         console.error(error);
-        // Handle the error as needed
+      
     }
 };
 
