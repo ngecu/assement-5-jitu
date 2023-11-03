@@ -16,8 +16,8 @@ CREATE PROCEDURE addNote
 AS
 BEGIN
 
-    INSERT INTO Notes (Title, Description, Content)
-    VALUES (@Title, @Description, @Content);
+    INSERT INTO NOTES2 (Title, Description, Content)
+    VALUES (@Note_id,@Title, @Description, @Content);
 END;
 
 
@@ -26,5 +26,5 @@ CREATE PROCEDURE FetchAllNotes
 AS
 BEGIN
     
-    SELECT * FROM Notes;
+    SELECT * FROM NOTES2;
 END;

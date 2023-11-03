@@ -5,7 +5,7 @@ import { addNote,  getAllNotes,  TestingRoute } from "../controllers/notebookCon
 const noterouter: Router  = Router()
 
 noterouter.get('/', TestingRoute)
-noterouter.get("/all", getAllNotes)
+noterouter.get("/allNotes", getAllNotes)
 noterouter.post("/addNote", addNote)
 
 

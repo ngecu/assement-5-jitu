@@ -13,6 +13,8 @@ export function TestingRoute(req:Request, res:Response){
 
 
 export const getAllNotes = async(req:Request, res:Response)=>{
+    console.log("loggin all notes");
+    
     try {
 
         const pool = await mssql.connect(sqlConfig)
