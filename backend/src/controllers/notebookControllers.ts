@@ -3,6 +3,7 @@ import {  sqlConfig } from "../config/sqlConfig";
 import mssql from 'mssql'
 import {v4} from 'uuid'
 import Connection from '../dbhelpers/dbhelpers'
+import { noteSchema } from "../validators/noteValidators"
 const dbhelper = new Connection
 
 
@@ -32,8 +33,19 @@ export const getAllNotes = async(req:Request, res:Response)=>{
 
 
   export const addNote = async(req:Request, res: Response) =>{
+    console.log(req.body);
+    
     try {
         let {title,description,content} = req.body
+
+
+
+         const {error} = noteSchema.validate(req.body)
+
+        if(error){
+            return res.status(422).json(error)
+        }
+
 
         let note_id = v4()
 

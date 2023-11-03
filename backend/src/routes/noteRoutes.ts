@@ -6,7 +6,7 @@ const noterouter: Router  = Router()
 
 noterouter.get('/', TestingRoute)
 noterouter.get("/all", getAllNotes)
-noterouter.post("/", addNote)
+noterouter.post("/addNote", addNote)
 
 
 

@@ -7,3 +7,24 @@ CREATE TABLE NOTES2 (
     modified_at  DATETIME DEFAULT GETDATE()
 
 )
+
+
+CREATE PROCEDURE addNote
+    @Title NVARCHAR(255),
+    @Description NVARCHAR(255),
+    @Content NVARCHAR(MAX)
+AS
+BEGIN
+
+    INSERT INTO Notes (Title, Description, Content)
+    VALUES (@Title, @Description, @Content);
+END;
+
+
+
+CREATE PROCEDURE FetchAllNotes
+AS
+BEGIN
+    
+    SELECT * FROM Notes;
+END;
