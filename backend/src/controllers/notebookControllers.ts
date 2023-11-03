@@ -33,14 +33,14 @@ export const getAllNotes = async(req:Request, res:Response)=>{
 
   export const addNote = async(req:Request, res: Response) =>{
     try {
-        let {title,description,note} = req.body
+        let {title,description,content} = req.body
 
         let note_id = v4()
 
         
         
         let result = dbhelper.execute('addNote', {
-            note_id, title,description,note
+            note_id, title,description,content
         })
         
 

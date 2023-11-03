@@ -29,9 +29,11 @@ const getAllNotes = async () => {
                         <td>${element.title}</td>
                         <td>${element.description}</td>
                         <td>${element.content}</td>
+                        <td>${element.created_at}</td>
+
                         <td>
-                            <button class="edit-button" onclick="editNote(${index})">Edit</button>
-                            <button class="delete-button" onclick="deleteNote(${index})">Delete</button>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
                         </td>
                     </tr>
                 `;
