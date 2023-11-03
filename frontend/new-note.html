@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="./static/new-note.css">
 </head>
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
-        <a href="add-projects.html">Add Projects</a>
+        <a href="new-note.html">Add Note</a>
+    </div>
+
+    <div class="main">
+        <div class="add-note">
+            <h2> Note Add</h2>
+            <div class="add-project-container">
+                <div class="top-part">
+                    <h3>Note</h3>
+                    <p>-</p>
+
+                </div>
+
+                <label for="ntitle">Note Title:</label>
+                <input type="text" id="ntitle" name="ntitle" value="">
+        
+                <label for="ndescr">Note Description:</label>
+                <input type="text" id="ndescr" name="ndescr" value="">
+        
+                <label for="ncontent">Note Content:</label>
+                <textarea name="ncontent" id="ncontent" cols="30" rows="10"></textarea>
+        
+                <button class="button button1" type="submit">Add Note</button>
+            </form>
+                
+            </div>
+        </div>
     </div>
 </body>
 </html>
